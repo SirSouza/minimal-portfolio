@@ -7,10 +7,7 @@ import { flushSync } from "react-dom"
 
 import { cn } from "@/lib/utils"
 
-// 1. Define the possible animation types (UPDATED to include all demo types)
-// NOTE: Type is renamed from 'AnimationType' to 'ThemeAnimationType' 
-// to avoid conflicts if used with the demo file in the same scope, 
-// though the original 'AnimationType' is kept for minimal change.
+
 type AnimationType =
     | "none"
     | "circle-spread"
@@ -26,14 +23,14 @@ type AnimationType =
     | "swipe-down"
     | "wave-ripple"
 
-// 2. Interface is renamed
+
 interface ToggleThemeProps
     extends React.ComponentPropsWithoutRef<"button"> {
     duration?: number
     animationType?: AnimationType
 }
 
-// 3. Component and export are renamed
+
 export const ToggleTheme = ({
     className,
     duration = 400,
@@ -62,7 +59,7 @@ export const ToggleTheme = ({
     const toggleTheme = useCallback(async () => {
         if (!buttonRef.current) return
 
-        // Wait for the DOM update to complete within the View Transition
+       
         await document.startViewTransition(() => {
             flushSync(() => {
                 const newTheme = !isDark
@@ -72,7 +69,7 @@ export const ToggleTheme = ({
             })
         }).ready
 
-        // Calculate coordinates and dimensions for spatial animations
+        
         const { top, left, width, height } =
             buttonRef.current.getBoundingClientRect()
         const x = left + width / 2
@@ -85,10 +82,10 @@ export const ToggleTheme = ({
         const viewportHeight = window.innerHeight
 
 
-        // 4. Implement a switch to handle all animation types
+       
         switch (animationType) {
 
-            // --- Existing/Refined Types ---
+          
 
             case "circle-spread":
                 document.documentElement.animate(
@@ -153,7 +150,7 @@ export const ToggleTheme = ({
                 break
 
 
-            // --- New Advanced Types ---
+            
 
             case "diag-down-right":
                 document.documentElement.animate(
@@ -245,7 +242,7 @@ export const ToggleTheme = ({
                 )
                 break
 
-            // --- IMPLEMENTATION FOR MISSING TYPES ---
+            
 
             case "swipe-right":
                 document.documentElement.animate(
@@ -297,7 +294,7 @@ export const ToggleTheme = ({
 
             case "none":
             default:
-                // No custom animation runs
+                
                 break
         }
 
@@ -318,9 +315,7 @@ export const ToggleTheme = ({
                 {isDark ? <FaSun className="h-5 w-5" /> : <BsFillMoonStarsFill  className="h-4 w-4" />}
             </button>
 
-            {/* This inline <style> block is necessary to override the default 
-                view transition animation for all JS-based effects.
-            */}
+            
             {animationType !== 'flip-x-in' && (
                 <style
                     dangerouslySetInnerHTML={{
