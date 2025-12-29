@@ -11,7 +11,7 @@ import {
 	HoverCardTrigger,
 } from "@/components/ui/hover-card";
 import { Button } from "@/components/ui/button";
-import Stacks from "@/components/ui/stack";
+import { PinContainer } from "@/components/lightwind-shadcn/PinContainer";
 
 /* FROM LIBS */
 import { FaGithubSquare, FaLinkedin, FaTwitterSquare } from "react-icons/fa";
@@ -248,19 +248,254 @@ export default function Home() {
 								</div>
 							</section>
 
-							<section
-								className="h-auto flex justify-center items-center flex-col w-full"
-								id="stack"
-							>
-								<h1>Tecnologias que uso</h1>
+							<section className="flex  items-center flex-col w-full h-80" id="stack">
+								<ScrollReveal mode="container" staggerDelay={0.15} baseRotation={0}>
+									<div className="mb-3.5 items-center">
+										<h1 className="font-black text-2xl font-display uppercase">
+											Hard Skills
+										</h1>
+									</div>
+								</ScrollReveal>
+								<div className="flex w-full h-full" id="hardSkills">
+									<div className="flex-1 flex flex-col items-center" id="current">
+										<ScrollReveal mode="container" staggerDelay={0.15} baseRotation={0}>
+											<h1 className="font-black  text-2xl mb-2">Competências Atuais</h1>
+										</ScrollReveal>
 
-								<div>
-									<Stacks />
+										<div className="w-80">
+											<Separator
+												orientation="horizontal"
+												className="bg-sidebar-accent-foreground/30"
+											/>
+										</div>
+										<ScrollReveal mode="container" staggerDelay={0.15} baseRotation={0}>
+											<div
+												className="h-full w-full flex items-center justify-center flex-wrap flex-1"
+												id="current-skills"
+											>
+												<i className="devicon-react-original text-6xl p-3 transition-transform duration-300 hover:scale-115 "></i>
+												<i className="devicon-javascript-plain text-6xl p-3 transition-transform duration-300 hover:scale-115"></i>
+												<i className="devicon-html5-plain-wordmark text-6xl p-3 transition-transform duration-300 hover:scale-115"></i>
+												<i className="devicon-tailwindcss-original text-6xl p-3 transition-transform duration-300 hover:scale-115"></i>
+												<i className="devicon-css3-plain-wordmark text-6xl p-3 transition-transform duration-300 hover:scale-115"></i>
+												<i className="devicon-linux-plain text-6xl p-3 transition-transform duration-300 hover:scale-115"></i>
+												<i className="devicon-github-original-wordmark text-6xl p-3 transition-transform duration-300 hover:scale-115"></i>
+												<i className="devicon-git-plain text-6xl p-3 transition-transform duration-300 hover:scale-115"></i>
+												<i className="devicon-npm-original-wordmark text-6xl p-3 transition-transform duration-300 hover:scale-115"></i>
+											</div>
+										</ScrollReveal>
+									</div>
+									<Separator
+										orientation="vertical"
+										className="bg-sidebar-accent-foreground/30"
+									/>
+									<div className="flex-1 flex flex-col items-center">
+										<ScrollReveal mode="container" staggerDelay={0.15} baseRotation={0}>
+											<h1 className="font-black  text-2xl mb-2">Em aprendizado</h1>
+										</ScrollReveal>
+										<div className="w-80">
+											<Separator
+												orientation="horizontal"
+												className="bg-sidebar-accent-foreground/30 "
+											/>
+										</div>
+										<ScrollReveal mode="container" staggerDelay={0.15} baseRotation={0}>
+											<div
+												className="h-full w-full flex items-center justify-center flex-wrap flex-1"
+												id="learning"
+											>
+												<i className="devicon-docker-plain-wordmark text-6xl p-3 transition-transform duration-300 hover:scale-115"></i>
+												<i className="devicon-postgresql-plain-wordmark text-6xl p-3 transition-transform duration-300 hover:scale-115"></i>
+												<i className="devicon-python-plain text-6xl p-3 transition-transform duration-300 hover:scale-115"></i>
+												<i className="devicon-rust-original text-6xl p-3 transition-transform duration-300 hover:scale-115"></i>
+												<i className="devicon-bash-plain text-6xl p-3 transition-transform duration-300 hover:scale-115"></i>
+												<i className="devicon-nodejs-plain-wordmark text-6xl p-3 transition-transform duration-300 hover:scale-115"></i>
+												<i className="devicon-typescript-plain text-6xl p-3 transition-transform duration-300 hover:scale-115"></i>
+												<i className="devicon-nextjs-original-wordmark text-6xl p-3 transition-transform duration-300 hover:scale-115"></i>
+											</div>
+										</ScrollReveal>{" "}
+									</div>
 								</div>
 							</section>
 
-							<section className="" id="porfolio">
-								Portfolio
+							<section
+								className="p-2.5 mt-10 flex flex-col justify-center items-center"
+								id="porfolio"
+							>
+								<div className="mb-3.5 items-center">
+									<h1 className="font-black text-2xl font-display uppercase">
+										Portfólio
+									</h1>
+								</div>
+								<div className="w-full h-auto flex flex-wrap justify-around" id="cards">
+									{/* CARD 1 */}
+									<PinContainer
+										title="Awax Site"
+										href="https://github.com/SirSouza/Awax"
+									>
+										<div className="flex basis-full flex-col p-1 tracking-tight text-foreground sm:basis-1/2 w-60 h-70">
+											<h3 className="max-w-xs !pb-2 !m-0 font-bold text-base text-foreground text-center">
+												Awax Site
+											</h3>
+											<Separator
+												orientation="horizontal"
+												className="bg-sidebar-accent-foreground/30"
+											/>
+											<div className="text-sm mb-1 !p-0 font-normal text-center">
+												<span className="text-foreground/70 text-xs ">
+													Projeto completo de site desenvolvido no curso B7Web. Foco em
+													responsividade, organização de seções e experiência de usuário.
+												</span>
+											</div>
+											<div className="w-full h-63.75 rounded-xl overflow-hidden">
+												<img src="/images/awax.jpeg" alt="" />
+											</div>
+										</div>
+									</PinContainer>
+
+									{/* CARD 2 */}
+									<PinContainer
+										title="Diário digital"
+										href="https://github.com/SirSouza/anorak-system-log"
+									>
+										<div className="flex basis-full flex-col p-1 tracking-tight text-foreground sm:basis-1/2 w-60 h-70">
+											<h3 className="max-w-xs !pb-2 !m-0 font-bold text-base text-foreground text-center">
+												Anorak System Log
+											</h3>
+											<Separator
+												orientation="horizontal"
+												className="bg-sidebar-accent-foreground/30"
+											/>
+											<div className="text-sm mb-1 !p-0 font-normal text-center">
+												<span className="text-foreground/70 text-xs ">
+													Aplicação projetada como diário online. Desenvolvido para praticar
+													estruturação de páginas e estilo retrô minimalista.
+												</span>
+											</div>
+											<div className="w-full h-63.75 rounded-xl overflow-hidden">
+												<img src="/images/diario-digital.png" alt="" className="h-full" />
+											</div>
+										</div>
+									</PinContainer>
+
+									{/* CARD 3 */}
+									<PinContainer
+										title="B7 Burger"
+										href="https://github.com/SirSouza/B7Burger"
+									>
+										<div className="flex basis-full flex-col p-1 tracking-tight text-foreground sm:basis-1/2 w-60 h-70">
+											<h3 className="max-w-xs !pb-2 !m-0 font-bold text-base text-foreground text-center">
+												B7 Burger
+											</h3>
+											<Separator
+												orientation="horizontal"
+												className="bg-sidebar-accent-foreground/30"
+											/>
+											<div className="text-sm mb-1 !p-0 font-normal text-center">
+												<span className="text-foreground/70 text-xs ">
+													Página fictícia de hamburgueria, com foco em responsividade, design
+													atrativo e boas práticas de estruturação HTML/CSS.
+												</span>
+											</div>
+											<div className="w-full h-full rounded-xl overflow-hidden">
+												<img src="/images/b7-burger.jpeg" alt="" />
+											</div>
+										</div>
+									</PinContainer>
+
+									{/* CARD 4 */}
+									<PinContainer
+										title="IBM PC"
+										href="https://github.com/SirSouza/landing-ibm-pc5150"
+									>
+										<div className="flex basis-full flex-col p-1 tracking-tight text-foreground sm:basis-1/2 w-60 h-70">
+											<h3 className="max-w-xs !pb-2 !m-0 font-bold text-base text-foreground text-center">
+												IBM PC 5150
+											</h3>
+											<Separator
+												orientation="horizontal"
+												className="bg-sidebar-accent-foreground/30"
+											/>
+											<div className="text-sm mb-1 !p-0 font-normal text-center">
+												<span className="text-foreground/70 text-xs ">
+													Landing page dedicada ao IBM PC 5150, explorando design retrô e
+													história da computação. Foco em identidade visual nostálgica com
+													técnicas modernas de HTML e CSS.
+												</span>
+											</div>
+											<div className="w-full h-full rounded-xl overflow-hidden">
+												<img src="/images/ibm.png" alt="" />
+											</div>
+										</div>
+									</PinContainer>
+
+									{/* CARD 5 */}
+									<PinContainer
+										title="Starbucks"
+										href="https://github.com/SirSouza/starbucks"
+									>
+										<div className="flex basis-full flex-col p-1 tracking-tight text-foreground sm:basis-1/2 w-60 h-70">
+											<h3 className="max-w-xs !pb-2 !m-0 font-bold text-base text-foreground text-center">
+												Starbucks
+											</h3>
+											<Separator
+												orientation="horizontal"
+												className="bg-sidebar-accent-foreground/30"
+											/>
+											<div className="text-sm mb-1 !p-0 font-normal text-center">
+												<span className="text-foreground/70 text-xs ">
+													Modelo inspirado no site oficial da Starbucks, feito no curso
+													B7Web. Aplicação prática de conceitos de layout, estilização
+													avançada e adaptação responsiva.
+												</span>
+											</div>
+											<div className="w-full h-full rounded-xl overflow-hidden">
+												<img src="/images/starbucks.jpeg" alt="" />
+											</div>
+										</div>
+									</PinContainer>
+
+									{/* CARD 6 */}
+									<PinContainer
+										title="Tributo"
+										href="https://github.com/SirSouza/tributo"
+									>
+										<div className="flex basis-full flex-col p-1 tracking-tight text-foreground sm:basis-1/2 w-60 h-70">
+											<h3 className="max-w-xs !pb-2 !m-0 font-bold text-base text-foreground text-center">
+												Tributo a Metthew Perry
+											</h3>
+											<Separator
+												orientation="horizontal"
+												className="bg-sidebar-accent-foreground/30"
+											/>
+											<div className="text-sm mb-1 !p-0 font-normal text-center">
+												<span className="text-foreground/70 text-xs ">
+													Página tributo em homenagem ao ator Matthew Perry. Projeto voltado
+													para praticar tipografia, organização de conteúdo e uso de imagens
+													em destaque.
+												</span>
+											</div>
+											<div className="w-full h-full rounded-xl overflow-hidden">
+												<img src="/images/tributo.jpeg" alt="" />
+											</div>
+										</div>
+									</PinContainer>
+								</div>
+								<div>
+									<p>
+										Esses são só alguns dos meus projetos, para ver mais, acesse meu
+										perfil no{" "}
+										<a
+											href="https://github.com/SirSouza"
+											target="_blank"
+											rel="noopener noreferrer"
+											className="decoration-accent-foreground underline"
+										>
+											Github
+										</a>
+										.
+									</p>
+								</div>
 							</section>
 
 							<section className="" id="contato">

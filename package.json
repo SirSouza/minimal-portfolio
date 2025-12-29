@@ -15,6 +15,7 @@
     "@radix-ui/react-slot": "^1.2.4",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
+    "devicon": "^2.17.0",
     "framer-motion": "^12.23.26",
     "gsap": "^3.14.2",
     "lucide-react": "^0.562.0",
@@ -22,6 +23,7 @@
     "next": "16.1.1",
     "react": "19.2.3",
     "react-dom": "19.2.3",
+    "react-fast-marquee": "^1.6.5",
     "react-icons": "^5.5.0",
     "tailwind-merge": "^3.4.0",
     "typewriter-effect": "^2.22.0"

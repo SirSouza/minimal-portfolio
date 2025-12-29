@@ -24,6 +24,7 @@ export interface ScrollRevealProps {
   size?: "sm" | "md" | "lg" | "xl" | "2xl" | "4xl";
   align?: "left" | "center" | "right";
   variant?: "default" | "muted" | "accent" | "primary";
+  
 }
 
 const sizeClasses = {
