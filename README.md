@@ -20,6 +20,13 @@ O projeto foi pensado para ser simples na superfície, mas **bem estruturado por
 
 ---
 
+## ⚙️ Componentes
+
+Foi utilizado componentes de libs variadas de acordo com a necessidade do projeto.
+Um destaque para o ScrollReveal da biblioteca de componentes Lighstwind que foi modificado para 
+aplicar o efeito tanto em texto como em outros componentes, modo texto e modo container.
+Outros componentes também sofreram pequenas mudanças, os devidos créditos foi deixado no footer do projeto.
+
 ## 🧠 Decisões Técnicas
 
 Mesmo sendo uma landing page, o projeto utiliza:
@@ -37,29 +44,21 @@ Mesmo sendo uma landing page, o projeto utiliza:
   - Estrutura pronta para novas rotas (`/projects`, `/about`, etc.)
   - Sem necessidade de refatoração futura
 
-Essas escolhas não são obrigatórias para uma landing page,  
-mas refletem **maturidade técnica e visão de longo prazo**.
 
 ---
 
 ## 🗂️ Estrutura Essencial
 
-src/
-└─ app/
-├─ layout.tsx
-├─ page.tsx
-└─ globals.css
-└─ components
-
-
-
-public/
-├─ favicon.ico
-├─ icon.png
-├─ apple-touch-icon.png
-├─ android-chrome-192x192.png
-├─ android-chrome-512x512.png
-└─ site.webmanifest
+/
+├── public
+└── src
+    ├── app
+    │   ├── global.css
+    │   ├── layout.tsx
+    │   └── page.tsx
+    ├── componentes
+    ├── hooks
+    └── lib
 
 
 ---
