@@ -47,19 +47,6 @@ Mesmo sendo uma landing page, o projeto utiliza:
 
 ---
 
-## 🗂️ Estrutura Essencial
-
-/
-├── public
-└── src
-    ├── app
-    │   ├── global.css
-    │   ├── layout.tsx
-    │   └── page.tsx
-    ├── componentes
-    ├── hooks
-    └── lib
-
 
 ---
 
