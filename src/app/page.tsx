@@ -474,11 +474,11 @@ export default function Home() {
 										{/* CARD 1 */}
 										<PinContainer
 											title="Portfólio"
-											href="https://github.com/SirSouza/Awax"
+											href="https://github.com/SirSouza/minimal-portfolio"
 										>
 											<div className="flex basis-full flex-col p-1 tracking-tight text-foreground sm:basis-1/2 w-60 h-70">
 												<h3 className="max-w-xs pb-2! m-0! font-bold text-base text-foreground text-center">
-													Awax Site
+													Portfólio
 												</h3>
 												<Separator
 													orientation="horizontal"
