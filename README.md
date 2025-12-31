@@ -1,36 +1,101 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 🟢 Anorak — Minimal Portfolio
 
-## Getting Started
+Portfolio pessoal desenvolvido como **landing page**, com foco em **design minimalista**, estética retrô e **boas práticas modernas de front-end**.
 
-First, run the development server:
+O projeto foi pensado para ser simples na superfície, mas **bem estruturado por baixo**, permitindo crescimento sem retrabalho.
 
-```bash
+---
+
+## ⚙️ Stack
+
+- **Next.js (App Router)**
+- **React 19**
+- **TypeScript**
+- **Tailwind CSS**
+- **Framer Motion / Motion**
+- **GSAP**
+- **Radix UI**
+- **Lucide / React Icons**
+- **Vercel** (deploy)
+
+---
+
+## 🧠 Decisões Técnicas
+
+Mesmo sendo uma landing page, o projeto utiliza:
+
+- **Metadata nativa do Next.js**
+  - Título padrão + template para páginas futuras
+  - SEO limpo e escalável
+
+- **Favicon completo**
+  - Desktop
+  - iOS (Apple Touch Icon)
+  - Android / PWA (Web Manifest)
+
+- **Arquitetura preparada para expansão**
+  - Estrutura pronta para novas rotas (`/projects`, `/about`, etc.)
+  - Sem necessidade de refatoração futura
+
+Essas escolhas não são obrigatórias para uma landing page,  
+mas refletem **maturidade técnica e visão de longo prazo**.
+
+---
+
+## 🗂️ Estrutura Essencial
+
+src/
+└─ app/
+├─ layout.tsx
+├─ page.tsx
+└─ globals.css
+└─ components
+
+
+
+public/
+├─ favicon.ico
+├─ icon.png
+├─ apple-touch-icon.png
+├─ android-chrome-192x192.png
+├─ android-chrome-512x512.png
+└─ site.webmanifest
+
+
+---
+
+## 🏷️ Metadata (SEO)
+
+O título do site é controlado via `metadata`:
+
+```ts
+title: {
+  default: "Anorak | Portfolio",
+  template: "%s • Anorak",
+}
+Isso garante:
+Título consistent
+Facilidade para páginas futuras
+Melhor leitura por buscadores e compartilhamentos
+
+
+▶️ Rodando localmente
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Acesse:
+👉 http://localhost:3000
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+🏗️ Build de produção
+npm run build
+npm run start
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+🌐 Deploy
 
-## Learn More
+Deploy automatizado via Vercel, com build a cada push na branch principal.
 
-To learn more about Next.js, take a look at the following resources:
+👤 Autor
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Anorak
+Front-end Developer
+Portfolio pessoal
