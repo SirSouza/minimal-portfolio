@@ -1,4 +1,4 @@
-# 🟢 Anorak — Minimal Portfolio
+# Anorak — Minimal Portfolio
 
 Portfolio pessoal desenvolvido como **landing page**, com foco em **design minimalista**, estética retrô e **boas práticas modernas de front-end**.
 
@@ -89,4 +89,6 @@ Portfolio pessoal
 
 
 
-![PREVIEW](./public/images/image.png)
+## PREVIEW
+
+![Preview do Projeto](./public/images/image.png)
