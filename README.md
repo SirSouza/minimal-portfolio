@@ -1,94 +1,70 @@
-# Anorak — Minimal Portfolio
+# 🛸 Anorak — Minimal Portfolio
+
+[![Vercel Deploy](https://img.shields.io/badge/Deploy-Live%20Demo-black?style=for-the-badge&logo=vercel)](https://devanorak.com.br)
+[![Next.js](https://img.shields.io/badge/Next.js-15-black?style=for-the-badge&logo=next.js)](https://nextjs.org/)
+[![React](https://img.shields.io/badge/React-19-blue?style=for-the-badge&logo=react)](https://react.dev/)
 
 Portfolio pessoal desenvolvido como **landing page**, com foco em **design minimalista**, estética retrô e **boas práticas modernas de front-end**.
 
-O projeto foi pensado para ser simples na superfície, mas **bem estruturado por baixo**, permitindo crescimento sem retrabalho.
+🔗 **Acesse o projeto:** [devanorak.com.br](https://devanorak.com.br)
 
 ---
 
-## ⚙️ Stack
+## 🛠️ Tech Stack
 
-- **Next.js (App Router)**
-- **React 19**
-- **TypeScript**
-- **Tailwind CSS**
-- **Framer Motion / Motion**
-- **GSAP**
-- **Radix UI**
-- **Lucide / React Icons**
-- **Vercel** (deploy)
-
----
-
-## ⚙️ Componentes
-
-Foi utilizado componentes de libs variadas de acordo com a necessidade do projeto.
-Um destaque para o ScrollReveal da biblioteca de componentes Lighstwind que foi modificado para 
-aplicar o efeito tanto em texto como em outros componentes, modo texto e modo container.
-Outros componentes também sofreram pequenas mudanças, os devidos créditos foi deixado no footer do projeto.
-
-## 🧠 Decisões Técnicas
-
-Mesmo sendo uma landing page, o projeto utiliza:
-
-- **Metadata nativa do Next.js**
-  - Título padrão + template para páginas futuras
-  - SEO limpo e escalável
-
-- **Favicon completo**
-  - Desktop
-  - iOS (Apple Touch Icon)
-  - Android / PWA (Web Manifest)
-
-- **Arquitetura preparada para expansão**
-  - Estrutura pronta para novas rotas (`/projects`, `/about`, etc.)
-  - Sem necessidade de refatoração futura
-
+| Categoria | Tecnologias |
+| :--- | :--- |
+| **Framework** | Next.js 15 (App Router), React 19 |
+| **Linguagem** | TypeScript |
+| **Estilização** | Tailwind CSS |
+| **Animações** | Framer Motion (Motion), GSAP |
+| **UI/UX** | Radix UI, Lucide Icons, React Icons |
+| **Deploy** | Vercel |
 
 ---
 
+## ✨ Componentes & Customizações
+
+O projeto utiliza uma curadoria de componentes adaptados para garantir uma experiência única:
+
+* **ScrollReveal (Customizado):** Baseado na biblioteca *Lightswind*, este componente foi modificado para suportar efeitos de revelação tanto em blocos de texto quanto em containers complexos (modos texto e container).
+* **Créditos:** As referências e bases de componentes de terceiros estão devidamente creditadas no rodapé do projeto.
 
 ---
 
-## 🏷️ Metadata (SEO)
+## 🧠 Decisões Técnicas & SEO
 
-O título do site é controlado via `metadata`:
+Apesar de ser uma landing page, a arquitetura segue padrões de aplicações robustas:
+
+### 🔍 Metadata (SEO)
+Configurado via `metadata API` do Next.js para garantir consistência em compartilhamentos:
 
 ```ts
 title: {
   default: "Anorak | Portfolio",
   template: "%s • Anorak",
 }
-Isso garante:
-Título consistent
-Facilidade para páginas futuras
-Melhor leitura por buscadores e compartilhamentos
+```
+**SEO**: Tags limpas e semânticas para melhor leitura pelos buscadores.
 
+**Favicon**: Conjunto completo para Desktop, iOS (Apple Touch Icon) e Android (Web Manifest).
 
-▶️ Rodando localmente
+# Arquitetura
+
+**Scalable Folders**: Estrutura de pastas pronta para novas rotas como /projects ou /about.
+
+**Performance**: Deploy automatizado e otimizado via Vercel Edge Network.
+
+# Como rodar localmente
+```sh
+# Instalar dependências
 npm install
+
+# Rodar em ambiente local
 npm run dev
+```
 
-Acesse:
-👉 http://localhost:3000
-
-🏗️ Build de produção
-npm run build
-npm run start
-
-🌐 Deploy
-
-Deploy automatizado via Vercel, com build a cada push na branch principal.
-
-👤 Autor
-
-Anorak
-Front-end Developer
-Portfolio pessoal
-
-
-
-
-## PREVIEW
+# Autor
+Ewerton de Souza AKA Anorak
 
 ![Preview do Projeto](./public/images/image.png)
