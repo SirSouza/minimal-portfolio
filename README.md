@@ -85,3 +85,8 @@ Deploy automatizado via Vercel, com build a cada push na branch principal.
 Anorak
 Front-end Developer
 Portfolio pessoal
+
+
+
+
+![PREVIEW](./public/images/image.png)
