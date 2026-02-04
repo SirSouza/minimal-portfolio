@@ -71,6 +71,21 @@ export function ScrollReveal({
 }: ScrollRevealProps) {
 	const containerRef = useRef<HTMLDivElement>(null);
 
+	// ==========================================
+	// OTIMIZAÇÃO: Detecta mobile
+	// ==========================================
+	const [isMobile, setIsMobile] = React.useState(false);
+
+	React.useEffect(() => {
+		const checkMobile = () => {
+			setIsMobile(window.innerWidth < 768);
+		};
+
+		checkMobile();
+		window.addEventListener("resize", checkMobile);
+		return () => window.removeEventListener("resize", checkMobile);
+	}, []);
+
 	const isInView = useInView(containerRef, {
 		amount: threshold,
 		once: false,
@@ -81,10 +96,13 @@ export function ScrollReveal({
 		offset: ["start end", "end start"],
 	});
 
+	// ==========================================
+	// OTIMIZAÇÃO: Desabilita rotação no mobile
+	// ==========================================
 	const rotation = useTransform(
 		scrollYProgress,
 		[0, 0.5, 1],
-		[baseRotation, 0, 0]
+		isMobile ? [0, 0, 0] : [baseRotation, 0, 0],
 	);
 
 	/* ---------------- TEXT MODE ---------------- */
@@ -101,22 +119,30 @@ export function ScrollReveal({
 			.filter((item) => item.value.length > 0);
 	}, [children]);
 
+	// ==========================================
+	// OTIMIZAÇÃO: Remove stagger no mobile
+	// ==========================================
 	const textContainerVariants = {
 		hidden: { opacity: 0 },
 		visible: {
 			opacity: 1,
 			transition: {
-				staggerChildren: staggerDelay,
+				staggerChildren: isMobile ? 0 : staggerDelay,
 				delayChildren: 0.1,
 			},
 		},
 	};
 
+	// ==========================================
+	// OTIMIZAÇÃO: Blur desabilitado no mobile
+	// Movimento reduzido no mobile
+	// Duração mais rápida no mobile
+	// ==========================================
 	const wordVariants = {
 		hidden: {
 			opacity: baseOpacity,
-			y: 20,
-			filter: enableBlur ? `blur(${blurStrength}px)` : "blur(0px)",
+			y: isMobile ? 10 : 20,
+			filter: enableBlur && !isMobile ? `blur(${blurStrength}px)` : "blur(0px)",
 		},
 		visible: {
 			opacity: 1,
@@ -124,7 +150,7 @@ export function ScrollReveal({
 			filter: "blur(0px)",
 			transition: {
 				...springConfig,
-				duration,
+				duration: isMobile ? 0.4 : duration,
 			},
 		},
 	};
@@ -136,7 +162,7 @@ export function ScrollReveal({
 		visible: {
 			opacity: 1,
 			transition: {
-				staggerChildren: staggerDelay,
+				staggerChildren: isMobile ? 0 : staggerDelay,
 				delayChildren: 0.15,
 			},
 		},
@@ -145,8 +171,8 @@ export function ScrollReveal({
 	const childVariants = {
 		hidden: {
 			opacity: 0,
-			y: 24,
-			filter: enableBlur ? `blur(${blurStrength}px)` : "blur(0px)",
+			y: isMobile ? 12 : 24,
+			filter: enableBlur && !isMobile ? `blur(${blurStrength}px)` : "blur(0px)",
 		},
 		visible: {
 			opacity: 1,
@@ -154,7 +180,7 @@ export function ScrollReveal({
 			filter: "blur(0px)",
 			transition: {
 				...springConfig,
-				duration,
+				duration: isMobile ? 0.4 : duration,
 			},
 		},
 	};
@@ -197,7 +223,7 @@ export function ScrollReveal({
 					sizeClasses[size],
 					alignClasses[align],
 					variantClasses[variant],
-					textClassName
+					textClassName,
 				)}
 				variants={textContainerVariants}
 				initial="hidden"
@@ -214,7 +240,7 @@ export function ScrollReveal({
 						>
 							{item.value}
 						</motion.span>
-					)
+					),
 				)}
 			</motion.p>
 		</motion.div>
