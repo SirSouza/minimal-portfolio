@@ -1,6 +1,10 @@
 "use client";
 
 /* FROM COMPONENTS */
+import Image from "next/image";
+import { ConditionalPinContainer } from "@/components/ConditionalPinContainer";
+import { useIsTouchDevice } from "@/hooks/useIsTouchDevice";
+import { cn } from "@/lib/utils";
 import { Separator } from "@/components/separator";
 import { ToggleTheme } from "@/components/toggleTheme";
 import { ColourfulText } from "@/components/ColourfulText";
@@ -10,7 +14,6 @@ import {
 	HoverCardTrigger,
 } from "@/components/hover-card";
 import { Button } from "@/components/button";
-import { PinContainer } from "@/components/PinContainer";
 import { ScrollReveal } from "@/components/scroll-reveal";
 import TextType from "@/components/TextType";
 /* FROM ICON LIBS */
@@ -21,8 +24,10 @@ import { ImBriefcase } from "react-icons/im";
 import { useState } from "react";
 import { Menu, X, House, Download } from "lucide-react";
 
+/* Home */
 export default function Home() {
 	const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+	const isTouchDevice = useIsTouchDevice();
 
 	return (
 		<div
@@ -46,8 +51,13 @@ export default function Home() {
 				{/* ================= ASIDE ================= */}
 				<aside className="hidden lg:flex flex-col w-30 shrink-0" id="aside">
 					<div className="flex flex-col h-full p-2.5">
-						<div className="flex h-25 w-full items-center justify-center" id="logo">
-							<img
+						<div
+							className="flex h-25 w-full items-center justify-center"
+							id="logo"
+						>
+							<Image
+								width={15}
+								height={15}
 								className="w-15 invert transition-all duration-300 dark:invert-0"
 								src="/images/logo.png"
 								alt=""
@@ -61,32 +71,53 @@ export default function Home() {
 							>
 								<li>
 									<a
-										className="inline-block transition-transform duration-300 hover:scale-125"
+										className={cn(
+											"inline-block",
+											!isTouchDevice &&
+												"transition-transform duration-300 hover:scale-125",
+										)}
 										href="https://github.com/SirSouza"
 										target="_blank"
 										rel="noopener noreferrer"
 									>
-										<FaGithubSquare size={35} className="hover:text-chart-2" />
+										<FaGithubSquare
+											size={35}
+											className={!isTouchDevice ? "hover:text-chart-2" : ""}
+										/>
 									</a>
 								</li>
 								<li>
 									<a
-										className="inline-block transition-transform duration-300 hover:scale-125"
+										className={cn(
+											"inline-block",
+											!isTouchDevice &&
+												"transition-transform duration-300 hover:scale-125",
+										)}
 										href="https://www.linkedin.com/in/devanorak/"
 										target="_blank"
 										rel="noopener noreferrer"
 									>
-										<FaLinkedin size={35} className="hover:text-chart-5" />
+										<FaLinkedin
+											size={35}
+											className={!isTouchDevice ? "hover:text-chart-5" : ""}
+										/>
 									</a>
 								</li>
 								<li>
 									<a
-										className="inline-block transition-transform duration-300 hover:scale-125"
+										className={cn(
+											"inline-block",
+											!isTouchDevice &&
+												"transition-transform duration-300 hover:scale-125",
+										)}
 										href="https://x.com/devanorak"
 										target="_blank"
 										rel="noopener noreferrer"
 									>
-										<FaTwitterSquare size={35} className="hover:text-chart-1" />
+										<FaTwitterSquare
+											size={35}
+											className={!isTouchDevice ? "hover:text-chart-1" : ""}
+										/>
 									</a>
 								</li>
 							</ul>
@@ -168,8 +199,11 @@ export default function Home() {
 									<ul className="flex gap-6 px-2" id="#navListToBar">
 										<li>
 											<a
-												className={`hover:text-chart-1 flex items-center gap-1 
-                      	transition-transform duration-300 hover:scale-110 hover:font-bold`}
+												className={cn(
+													"flex items-center gap-1",
+													!isTouchDevice &&
+														"hover:text-chart-1 transition-transform duration-300 hover:scale-110 hover:font-bold",
+												)}
 												href="#about"
 											>
 												<FaUser />
@@ -178,17 +212,24 @@ export default function Home() {
 										</li>
 										<li>
 											<a
-												className={`hover:text-chart-5 flex items-center gap-1 
-                      						transition-transform duration-300 hover:scale-110 hover:font-bold`}
+												className={cn(
+													"flex items-center gap-1",
+													!isTouchDevice &&
+														"hover:text-chart-1 transition-transform duration-300 hover:scale-110 hover:font-bold",
+												)}
 												href="#portfolio"
 											>
-												<ImBriefcase /> Portfólio
+												<ImBriefcase />
+												Portfólio
 											</a>
 										</li>
 										<li>
 											<a
-												className={`hover:text-chart-2 flex items-center gap-1 
-                      						transition-transform duration-300 hover:scale-110 hover:font-bold`}
+												className={cn(
+													"flex items-center gap-1",
+													!isTouchDevice &&
+														"hover:text-chart-1 transition-transform duration-300 hover:scale-110 hover:font-bold",
+												)}
 												href="#contato"
 											>
 												<MdEmail />
@@ -211,7 +252,10 @@ export default function Home() {
 							z-40 transform transition-transform duration-300 ease-in-out border-accent-foreground/30
               ${mobileMenuOpen ? "translate-x-0" : "translate-x-full"}`}
 						>
-							<nav id="mobileNav" className="h-full flex flex-col justify-start">
+							<nav
+								id="mobileNav"
+								className="h-full flex flex-col justify-start"
+							>
 								<ul className="flex flex-col justify-around h-8/12 gap-6 px-6 text-sm  mt-20">
 									<li>
 										<a
@@ -260,7 +304,7 @@ export default function Home() {
 						<div className="flex-1" id="content-container">
 							{/* ================= HERO ================= */}
 							<section
-								className="mt-2 sm:mt-8 min-h-[20vh] sm:min-h-[20vh] p-3.5"
+								className="mt-2 sm:mt-8 min-h-[5vh] sm:min-h-[20vh] p-3.5"
 								id="hero"
 							>
 								<div className="text-5xl sm:text-6xl md:text-8xl" id="me">
@@ -278,8 +322,15 @@ export default function Home() {
 										</ScrollReveal>
 									</div>
 								</div>
-								<div className=" flex justify-center sm:justify-start" id="devTitle">
-									<ScrollReveal enableBlur={true} mode="container" baseRotation={0}>
+								<div
+									className=" flex justify-center sm:justify-start"
+									id="devTitle"
+								>
+									<ScrollReveal
+										enableBlur={true}
+										mode="container"
+										baseRotation={0}
+									>
 										<span className="text-foreground text-base sm:text-2xl">
 											Desenvolvedor Web
 										</span>
@@ -289,11 +340,15 @@ export default function Home() {
 									className="flex items-center justify-center p-3 sm:p-8 mt-4 sm:mt-10"
 									id="hero-messege"
 								>
-									<ScrollReveal mode="container" staggerDelay={0.15} baseRotation={0}>
+									<ScrollReveal
+										mode="container"
+										staggerDelay={0.15}
+										baseRotation={0}
+									>
 										<h3 className="text-xl sm:text-5xl  font-bold text-center">
 											Programar é dar forma ao invisível,{" "}
-											<ColourfulText text="criando" className="inline" /> sistemas que
-											conectam, resolvem e{" "}
+											<ColourfulText text="criando" className="inline" />{" "}
+											sistemas que conectam, resolvem e{" "}
 											<ColourfulText text="inovam..." className="inline" />
 										</h3>
 									</ScrollReveal>
@@ -301,7 +356,7 @@ export default function Home() {
 							</section>
 
 							{/* ================= ABOUT ================= */}
-							<section className="p-3.5 mt-1 mb-10 sm:mt-5 sm:mb-20" id="about">
+							<section className="p-3.5 mb-10 sm:mt-5 sm:mb-20" id="about">
 								<div className="p-5">
 									<ScrollReveal
 										enableBlur={true}
@@ -310,12 +365,13 @@ export default function Home() {
 										baseRotation={0}
 									>
 										Olá, eu sou o Ewerton, mas pode me chamar de Anorak. Sou um
-										desenvolvedor em constante evolução, apaixonado por criar soluções
-										digitais que unem tecnologia, design e usabilidade. Vejo cada projeto
-										como uma oportunidade de transformar ideias em sistemas funcionais e
-										eficientes, sempre buscando inovação e qualidade em cada linha de
-										código. Meu objetivo é ir além de simplesmente escrever programas:
-										quero construir experiências digitais que realmente façam a diferença.
+										desenvolvedor em constante evolução, apaixonado por criar
+										soluções digitais que unem tecnologia, design e usabilidade.
+										Vejo cada projeto como uma oportunidade de transformar
+										ideias em sistemas funcionais e eficientes, sempre buscando
+										inovação e qualidade em cada linha de código. Meu objetivo é
+										ir além de simplesmente escrever programas: quero construir
+										experiências digitais que realmente façam a diferença.
 									</ScrollReveal>
 								</div>
 							</section>
@@ -325,7 +381,11 @@ export default function Home() {
 								className="flex items-center flex-col w-full min-h-[20vh]"
 								id="stack"
 							>
-								<ScrollReveal mode="container" staggerDelay={0.15} baseRotation={0}>
+								<ScrollReveal
+									mode="container"
+									staggerDelay={0.15}
+									baseRotation={0}
+								>
 									<h3 className="text-4xl font-bold text-center uppercase mb-7">
 										<ColourfulText text="Hard Skills" className="inline" />
 									</h3>
@@ -334,9 +394,18 @@ export default function Home() {
 									className="flex flex-col lg:flex-row w-full h-full gap-8"
 									id="hardSkills"
 								>
-									<div className="flex-1 flex flex-col items-center" id="current">
-										<ScrollReveal mode="container" staggerDelay={0.15} baseRotation={0}>
-											<h1 className="font-black  text-2xl mb-2">Competências Atuais</h1>
+									<div
+										className="flex-1 flex flex-col items-center"
+										id="current"
+									>
+										<ScrollReveal
+											mode="container"
+											staggerDelay={0.15}
+											baseRotation={0}
+										>
+											<h1 className="font-black  text-2xl mb-2">
+												Competências Atuais
+											</h1>
 										</ScrollReveal>
 
 										<div className="w-80">
@@ -345,51 +414,140 @@ export default function Home() {
 												className="bg-sidebar-accent-foreground/30 mb-7"
 											/>
 										</div>
-										<ScrollReveal mode="container" staggerDelay={0.15} baseRotation={0}>
+										<ScrollReveal
+											mode="container"
+											staggerDelay={0.15}
+											baseRotation={0}
+										>
 											<div
 												className="h-full w-full flex items-center justify-center flex-wrap flex-1"
 												id="current-skills"
 											>
-												<img
-													src="https://skillicons.dev/icons?i=react"
-													className="w-10 h-10 sm:w-12 sm:h-12 md:w-15 md:h-15  transition-transform duration-300 hover:scale-115 mr-4 mb-7"
-												/>
-												<img
-													src="https://skillicons.dev/icons?i=js"
-													className="w-10 h-10 sm:w-12 sm:h-12 md:w-15 md:h-15 transition-transform duration-300 hover:scale-115 mr-4 mb-7"
-												/>
-												<img
-													src="https://skillicons.dev/icons?i=html"
-													className="w-10 h-10 sm:w-12 sm:h-12 md:w-15 md:h-15 transition-transform duration-300 hover:scale-115 mr-4 mb-7"
-												/>
-												<img
-													src="https://skillicons.dev/icons?i=tailwind"
-													className="w-10 h-10 sm:w-12 sm:h-12 md:w-15 md:h-15 transition-transform duration-300 hover:scale-115 mr-4 mb-7"
-												/>
-												<img
-													src="https://skillicons.dev/icons?i=css"
-													className="w-10 h-10 sm:w-12 sm:h-12 md:w-15 md:h-15 transition-transform duration-300 hover:scale-115 mr-4 mb-7"
-												/>
-												<img
-													src="https://skillicons.dev/icons?i=linux"
-													className="w-10 h-10 sm:w-12 sm:h-12 md:w-15 md:h-15 transition-transform duration-300 hover:scale-115 mr-4 mb-7"
-												/>
-												<img
-													src="https://skillicons.dev/icons?i=github"
-													className="w-10 h-10 sm:w-12 sm:h-12 md:w-15 md:h-15 transition-transform duration-300 hover:scale-115 mr-4 mb-7"
-												/>
-												<img
-													src="https://skillicons.dev/icons?i=git"
-													className="w-10 h-10 sm:w-12 sm:h-12 md:w-15 md:h-15 transition-transform duration-300 hover:scale-115 mr-4 mb-7"
-												/>
-												<img
-													src="https://skillicons.dev/icons?i=npm"
-													className="w-10 h-10 sm:w-12 sm:h-12 md:w-15 md:h-15 transition-transform duration-300 hover:scale-115 mr-4 mb-7"
-												/>
-												<img
-													src="https://skillicons.dev/icons?i=vercel"
-													className="w-10 h-10 sm:w-12 sm:h-12 md:w-15 md:h-15 transition-transform duration-300 hover:scale-115 mr-4 mb-7"
-												/>
+												<div
+													className="h-full w-full flex items-center justify-center flex-wrap flex-1"
+													id="current-skills"
+												>
+													<Image
+														src="/icons/React-Dark.svg"
+														alt="React"
+														width={60}
+														height={60}
+														unoptimized
+														className={cn(
+															"w-10 h-10 sm:w-12 sm:h-12 md:w-15 md:h-15 mr-4 mb-7",
+															!isTouchDevice &&
+																"transition-transform duration-300 hover:scale-115",
+														)}
+													/>
+													<Image
+														src="/icons/JavaScript.svg"
+														alt="JavaScript"
+														width={60}
+														height={60}
+														unoptimized
+														className={cn(
+															"w-10 h-10 sm:w-12 sm:h-12 md:w-15 md:h-15 mr-4 mb-7",
+															!isTouchDevice &&
+																"transition-transform duration-300 hover:scale-115",
+														)}
+													/>
+													<Image
+														src="/icons/HTML.svg"
+														alt="HTML"
+														width={60}
+														height={60}
+														unoptimized
+														className={cn(
+															"w-10 h-10 sm:w-12 sm:h-12 md:w-15 md:h-15 mr-4 mb-7",
+															!isTouchDevice &&
+																"transition-transform duration-300 hover:scale-115",
+														)}
+													/>
+													<Image
+														src="/icons/TailwindCSS-Dark.svg"
+														alt="Tailwind"
+														width={60}
+														height={60}
+														unoptimized
+														className={cn(
+															"w-10 h-10 sm:w-12 sm:h-12 md:w-15 md:h-15 mr-4 mb-7",
+															!isTouchDevice &&
+																"transition-transform duration-300 hover:scale-115",
+														)}
+													/>
+													<Image
+														src="/icons/CSS.svg"
+														alt="CSS"
+														width={60}
+														height={60}
+														unoptimized
+														className={cn(
+															"w-10 h-10 sm:w-12 sm:h-12 md:w-15 md:h-15 mr-4 mb-7",
+															!isTouchDevice &&
+																"transition-transform duration-300 hover:scale-115",
+														)}
+													/>
+													<Image
+														src="/icons/Linux-Dark.svg"
+														alt="Linux"
+														width={60}
+														height={60}
+														unoptimized
+														className={cn(
+															"w-10 h-10 sm:w-12 sm:h-12 md:w-15 md:h-15 mr-4 mb-7",
+															!isTouchDevice &&
+																"transition-transform duration-300 hover:scale-115",
+														)}
+													/>
+													<Image
+														src="/icons/Github-Dark.svg"
+														alt="GitHub"
+														width={60}
+														height={60}
+														unoptimized
+														className={cn(
+															"w-10 h-10 sm:w-12 sm:h-12 md:w-15 md:h-15 mr-4 mb-7",
+															!isTouchDevice &&
+																"transition-transform duration-300 hover:scale-115",
+														)}
+													/>
+													<Image
+														src="/icons/Git.svg"
+														alt="Git"
+														width={60}
+														height={60}
+														unoptimized
+														className={cn(
+															"w-10 h-10 sm:w-12 sm:h-12 md:w-15 md:h-15 mr-4 mb-7",
+															!isTouchDevice &&
+																"transition-transform duration-300 hover:scale-115",
+														)}
+													/>
+													<Image
+														src="/icons/Npm-Dark.svg"
+														alt="NPM"
+														width={60}
+														height={60}
+														unoptimized
+														className={cn(
+															"w-10 h-10 sm:w-12 sm:h-12 md:w-15 md:h-15 mr-4 mb-7",
+															!isTouchDevice &&
+																"transition-transform duration-300 hover:scale-115",
+														)}
+													/>
+													<Image
+														src="/icons/Vercel-Dark.svg"
+														alt="Vercel"
+														width={60}
+														height={60}
+														unoptimized
+														className={cn(
+															"w-10 h-10 sm:w-12 sm:h-12 md:w-15 md:h-15 mr-4 mb-7",
+															!isTouchDevice &&
+																"transition-transform duration-300 hover:scale-115",
+														)}
+													/>
+												</div>
 											</div>
 										</ScrollReveal>
 									</div>
@@ -397,9 +555,18 @@ export default function Home() {
 										id="hardSkills-divider"
 										className="hidden lg:block w-px bg-black/20 mx-6"
 									/>
-									<div className="flex-1 flex flex-col items-center" id="learning">
-										<ScrollReveal mode="container" staggerDelay={0.15} baseRotation={0}>
-											<h1 className="font-black  text-2xl mb-2">Em aprendizado</h1>
+									<div
+										className="flex-1 flex flex-col items-center"
+										id="learning"
+									>
+										<ScrollReveal
+											mode="container"
+											staggerDelay={0.15}
+											baseRotation={0}
+										>
+											<h1 className="font-black  text-2xl mb-2">
+												Em aprendizado
+											</h1>
 										</ScrollReveal>
 										<div className="w-80">
 											<Separator
@@ -407,46 +574,77 @@ export default function Home() {
 												className="bg-sidebar-accent-foreground/30 mb-7 "
 											/>
 										</div>
-										<ScrollReveal mode="container" staggerDelay={0.15} baseRotation={0}>
+										<ScrollReveal
+											mode="container"
+											staggerDelay={0.15}
+											baseRotation={0}
+										>
 											<div
 												className="h-full w-full flex items-center justify-center flex-wrap flex-1 "
 												id="learning"
 											>
-												<img
-													src="https://skillicons.dev/icons?i=docker"
+												<Image
+													width={60}
+													height={60}
+													src="/icons/Docker.svg"
 													className="w-10 h-10 sm:w-12 sm:h-12 md:w-15 md:h-15 transition-transform duration-300 hover:scale-115 mr-4 mb-7"
+													alt={""}
 												/>
-												<img
-													src="https://skillicons.dev/icons?i=postgres"
+												<Image
+													width={60}
+													height={60}
+													src="/icons/PostgreSQL-Dark.svg"
 													className="w-10 h-10 sm:w-12 sm:h-12 md:w-15 md:h-15 transition-transform duration-300 hover:scale-115 mr-4 mb-7"
+													alt={""}
 												/>
-												<img
-													src="https://skillicons.dev/icons?i=python"
+												<Image
+													width={60}
+													height={60}
+													src="/icons/Python-Dark.svg"
 													className="w-10 h-10 sm:w-12 sm:h-12 md:w-15 md:h-15 transition-transform duration-300 hover:scale-115 mr-4 mb-7"
+													alt={""}
 												/>
-												<img
-													src="https://skillicons.dev/icons?i=rust"
+												<Image
+													width={60}
+													height={60}
+													src="/icons/Rust.svg"
 													className="w-10 h-10 sm:w-12 sm:h-12 md:w-15 md:h-15 transition-transform duration-300 hover:scale-115 mr-4 mb-7"
+													alt={""}
 												/>
-												<img
-													src="https://skillicons.dev/icons?i=bash"
+												<Image
+													width={60}
+													height={60}
+													src="/icons/Bash-Dark.svg"
 													className="w-10 h-10 sm:w-12 sm:h-12 md:w-15 md:h-15 transition-transform duration-300 hover:scale-115 mr-4 mb-7"
+													alt={""}
 												/>
-												<img
-													src="https://skillicons.dev/icons?i=nodejs"
+												<Image
+													width={60}
+													height={60}
+													src="/icons/NodeJS-Dark.svg"
 													className="w-10 h-10 sm:w-12 sm:h-12 md:w-15 md:h-15 transition-transform duration-300 hover:scale-115 mr-4 mb-7"
+													alt={""}
 												/>
-												<img
-													src="https://skillicons.dev/icons?i=ts"
+												<Image
+													width={60}
+													height={60}
+													src="/icons/TypeScript.svg"
 													className="w-10 h-10 sm:w-12 sm:h-12 md:w-15 md:h-15 transition-transform duration-300 hover:scale-115 mr-4 mb-7"
+													alt={""}
 												/>
-												<img
-													src="https://skillicons.dev/icons?i=nextjs"
+												<Image
+													width={60}
+													height={60}
+													src="/icons/NextJS-Dark.svg"
 													className="w-10 h-10 sm:w-12 sm:h-12 md:w-15 md:h-15 transition-transform duration-300 hover:scale-115 mr-4 mb-7"
+													alt={""}
 												/>
-												<img
-													src="https://skillicons.dev/icons?i=prisma"
+												<Image
+													width={60}
+													height={60}
+													src="/icons/Prisma.svg"
 													className="w-10 h-10 sm:w-12 sm:h-12 md:w-15 md:h-15 transition-transform duration-300 hover:scale-115 mr-4 mb-7"
+													alt={""}
 												/>
 											</div>
 										</ScrollReveal>{" "}
@@ -455,24 +653,35 @@ export default function Home() {
 							</section>
 
 							{/* ================= PORTFOLIO ================= */}
-							<section className="p-4 mt-5 flex flex-col items-stretch" id="portfolio">
+							<section
+								className="p-4 mt-5 flex flex-col items-stretch"
+								id="portfolio"
+							>
 								<div
 									className="mb-3.5 items-center flex justify-center"
 									id="portfolioTitle"
 								>
-									<ScrollReveal mode="container" staggerDelay={0.15} baseRotation={0}>
+									<ScrollReveal
+										mode="container"
+										staggerDelay={0.15}
+										baseRotation={0}
+									>
 										<h1 className="font-black text-4xl font-display uppercase">
 											<ColourfulText text="portfólio" className="inline" />
 										</h1>
 									</ScrollReveal>
 								</div>
-								<ScrollReveal mode="container" staggerDelay={0.15} baseRotation={0}>
+								<ScrollReveal
+									mode="container"
+									staggerDelay={0.15}
+									baseRotation={0}
+								>
 									<div
 										className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 w-full"
 										id="cards"
 									>
 										{/* CARD 1 */}
-										<PinContainer
+										<ConditionalPinContainer
 											title="Portfólio"
 											href="https://github.com/SirSouza/minimal-portfolio"
 										>
@@ -486,12 +695,18 @@ export default function Home() {
 												/>
 												<div className="text-sm mb-1 p-0! font-normal text-center">
 													<span className="text-foreground/70 text-xs ">
-														Projeto completo de site Portfólio. Foco em responsividade,
-														organização de seções e experiência de usuário.
+														Projeto completo de site Portfólio. Foco em
+														responsividade, organização de seções e experiência
+														de usuário.
 													</span>
 												</div>
 												<div className="w-full h-63.75 rounded-xl overflow-hidden mb-1.5">
-													<img src="/images/image.png" alt="" />
+													<Image
+														width={232}
+														height={60}
+														src="/images/image.png"
+														alt=""
+													/>
 												</div>
 												<div className="flex gap-1.5 flex-wrap justify-center mt-2">
 													<i className="devicon-react-original colored text-xl"></i>
@@ -500,12 +715,12 @@ export default function Home() {
 													<i className="devicon-tailwindcss-original colored text-xl"></i>
 												</div>
 											</div>
-										</PinContainer>
+										</ConditionalPinContainer>
 
 										{/* CARD 2 */}
-										<PinContainer
-											title="Diário digital"
-											href="https://github.com/SirSouza/anorak-system-log"
+										<ConditionalPinContainer
+											title="Portfólio"
+											href="https://github.com/SirSouza/minimal-portfolio"
 										>
 											<div className="flex basis-full flex-col p-1 tracking-tight text-foreground sm:basis-1/2 w-60 h-70">
 												<h3 className="max-w-xs pb-2! m-0! font-bold text-base text-foreground text-center">
@@ -517,13 +732,16 @@ export default function Home() {
 												/>
 												<div className="text-sm mb-1 p-0! font-normal text-center">
 													<span className="text-foreground/70 text-xs ">
-														Aplicação projetada como diário online. Desenvolvido para praticar
-														estruturação de páginas e estilo retrô minimalista.
+														Aplicação projetada como diário online. Desenvolvido
+														para praticar estruturação de páginas e estilo retrô
+														minimalista.
 													</span>
 												</div>
 												<div className="w-full h-63.75 rounded-xl overflow-hidden mb-1.5">
-													<img
-														src="/images/diario-digital.png"
+													<Image
+														width={232}
+														height={80}
+														src="/images/diario-digital-updated.png"
 														alt=""
 														className="h-full w-full"
 													/>
@@ -534,10 +752,10 @@ export default function Home() {
 													<i className="devicon-javascript-plain colored text-xl"></i>
 												</div>
 											</div>
-										</PinContainer>
+										</ConditionalPinContainer>
 
 										{/* CARD 3 */}
-										<PinContainer
+										<ConditionalPinContainer
 											title="B7 Burger"
 											href="https://github.com/SirSouza/B7Burger"
 										>
@@ -551,22 +769,28 @@ export default function Home() {
 												/>
 												<div className="text-sm mb-1 p-0! font-normal text-center">
 													<span className="text-foreground/70 text-xs ">
-														Página fictícia de hamburgueria, com foco em responsividade,
-														design atrativo e boas práticas de estruturação HTML/CSS.
+														Página fictícia de hamburgueria, com foco em
+														responsividade, design atrativo e boas práticas de
+														estruturação HTML/CSS.
 													</span>
 												</div>
 												<div className="w-full h-full rounded-xl overflow-hidden mb-1.5">
-													<img src="/images/b7-burger.jpeg" alt="" />
+													<Image
+														width={232}
+														height={60}
+														src="/images/b7-burger.jpeg"
+														alt=""
+													/>
 												</div>
 												<div className="flex gap-1.5 flex-wrap justify-center mt-2">
 													<i className="devicon-html5-plain colored text-xl"></i>
 													<i className="devicon-css3-plain colored text-xl"></i>
 												</div>
 											</div>
-										</PinContainer>
+										</ConditionalPinContainer>
 
 										{/* CARD 4 */}
-										<PinContainer
+										<ConditionalPinContainer
 											title="IBM PC"
 											href="https://github.com/SirSouza/landing-ibm-pc5150"
 										>
@@ -580,22 +804,28 @@ export default function Home() {
 												/>
 												<div className="text-sm mb-1 p-0! font-normal text-center">
 													<span className="text-foreground/70 text-xs ">
-														Landing page dedicada ao IBM PC 5150. Foco em identidade visual
-														nostálgica com técnicas modernas de HTML e CSS.
+														Landing page dedicada ao IBM PC 5150. Foco em
+														identidade visual nostálgica com técnicas modernas
+														de HTML e CSS.
 													</span>
 												</div>
 												<div className="w-full h-full rounded-xl overflow-hidden mb-1.5">
-													<img src="/images/ibm.png" alt="" />
+													<Image
+														width={232}
+														height={60}
+														src="/images/ibm.png"
+														alt=""
+													/>
 												</div>
 												<div className="flex gap-1.5 flex-wrap justify-center mt-2">
 													<i className="devicon-html5-plain colored text-xl"></i>
 													<i className="devicon-css3-plain colored text-xl"></i>
 												</div>
 											</div>
-										</PinContainer>
+										</ConditionalPinContainer>
 
 										{/* CARD 5 */}
-										<PinContainer
+										<ConditionalPinContainer
 											title="Starbucks"
 											href="https://github.com/SirSouza/starbucks"
 										>
@@ -609,22 +839,28 @@ export default function Home() {
 												/>
 												<div className="text-sm mb-1 p-0! font-normal text-center">
 													<span className="text-foreground/70 text-xs ">
-														Modelo inspirado no site oficial da Starbuck. Aplicação prática de
-														conceitos de layout, estilização avançada e responsividade.
+														Modelo inspirado no site oficial da Starbuck.
+														Aplicação prática de conceitos de layout,
+														estilização avançada e responsividade.
 													</span>
 												</div>
 												<div className="w-full h-full rounded-xl overflow-hidden mb-1.5">
-													<img src="/images/starbucks.jpeg" alt="" />
+													<Image
+														width={232}
+														height={60}
+														src="/images/starbucks.jpeg"
+														alt=""
+													/>
 												</div>
 												<div className="flex gap-1.5 flex-wrap justify-center mt-2">
 													<i className="devicon-html5-plain colored text-xl"></i>
 													<i className="devicon-css3-plain colored text-xl"></i>
 												</div>
 											</div>
-										</PinContainer>
+										</ConditionalPinContainer>
 
 										{/* CARD 6 */}
-										<PinContainer
+										<ConditionalPinContainer
 											title="Tributo"
 											href="https://github.com/SirSouza/tributo"
 										>
@@ -638,26 +874,32 @@ export default function Home() {
 												/>
 												<div className="text-sm mb-1 p-0! font-normal text-center">
 													<span className="text-foreground/70 text-xs ">
-														Página tributo em homenagem ao ator Matthew Perry. Projeto voltado
-														para praticar tipografia, organização de conteúdo.
+														Página tributo em homenagem ao ator Matthew Perry.
+														Projeto voltado para praticar tipografia,
+														organização de conteúdo.
 													</span>
 												</div>
 												<div className="w-full h-full rounded-xl overflow-hidden mb-1.5">
-													<img src="/images/tributo.jpeg" alt="" />
+													<Image
+														width={232}
+														height={60}
+														src="/images/tributo.jpeg"
+														alt=""
+													/>
 												</div>
 												<div className="flex gap-1.5 flex-wrap justify-center mt-2">
 													<i className="devicon-html5-plain colored text-xl"></i>
 													<i className="devicon-css3-plain colored text-xl"></i>
 												</div>
 											</div>
-										</PinContainer>
+										</ConditionalPinContainer>
 									</div>
 								</ScrollReveal>
 
-								<div>
+								<div className="mt-4">
 									<p className="text-center">
-										Esses são só alguns dos meus projetos, para ver mais, acesse meu
-										perfil no{" "}
+										Esses são só alguns dos meus projetos, para ver mais, acesse
+										meu perfil no{" "}
 										<a
 											href="https://github.com/SirSouza"
 											target="_blank"
@@ -673,27 +915,33 @@ export default function Home() {
 
 							{/* ================= CONTATO ================= */}
 							<section className="mt-6 mb-6 px-4 py-6" id="contato">
-								<ScrollReveal mode="container" staggerDelay={0.15} baseRotation={0}>
+								<ScrollReveal
+									mode="container"
+									staggerDelay={0.15}
+									baseRotation={0}
+								>
 									<div
 										className="w-full h-auto flex flex-col justify-center items-center gap-4"
 										id="container-contato"
 									>
 										<div className="" id="callAction">
 											<h3 className="text-xl sm:text-2xl md:text-3xl text-center">
-												Quer conversar sobre um projeto ou oportunidade? Fique à vontade
-												para entrar em contato.
+												Quer conversar sobre um projeto ou oportunidade? Fique à
+												vontade para entrar em contato.
 											</h3>
 										</div>
 										<div className="flex items-center justify-center" id="form">
 											<a
-												href="mailto:ewertoncomdabliu@proton.me?subject=Contato%20via%20Portfólio
-                      &body=Olá,%20vi%20seu%20portfólio%20e%20gostaria%20de%20conversar."
+												href="mailto:ewertoncomdabliu@proton.me?subject=Contato%20via%20Portfólio&body=Olá,%20vi%20seu%20portfólio%20e%20gostaria%20de%20conversar."
 												target="_blank"
 												rel="noopener noreferrer"
 											>
-												<img
-													src="https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/png/proton-mail.png"
-													className="w-8 h-8 transition-transform duration-300 hover:scale-115 mr-4 mb-7"
+												<Image
+													width={40}
+													height={40}
+													src="/icons/Gmail-Dark.svg"
+													className=" transition-transform duration-300 hover:scale-115 mr-4 mb-7"
+													alt={""}
 												/>
 											</a>
 											<a
@@ -701,9 +949,12 @@ export default function Home() {
 												target="_blank"
 												rel="noopener noreferrer"
 											>
-												<img
-													src="https://skillicons.dev/icons?i=twitter"
-													className="w-8 h-8 transition-transform duration-300 hover:scale-115 mr-4 mb-7"
+												<Image
+													width={40}
+													height={40}
+													src="/icons/Twitter.svg"
+													className=" transition-transform duration-300 hover:scale-115 mr-4 mb-7"
+													alt={""}
 												/>
 											</a>
 											<a
@@ -711,9 +962,12 @@ export default function Home() {
 												target="_blank"
 												rel="noopener noreferrer"
 											>
-												<img
-													src="https://skillicons.dev/icons?i=linkedin"
-													className="w-8 h-8 transition-transform duration-300 hover:scale-115 mr-4 mb-7"
+												<Image
+													width={40}
+													height={40}
+													src="/icons/LinkedIn.svg"
+													className=" transition-transform duration-300 hover:scale-115 mr-4 mb-7"
+													alt={""}
 												/>
 											</a>
 										</div>
@@ -737,7 +991,11 @@ export default function Home() {
 
 							{/* ================= FOOTER ================= */}
 							<footer id="footer">
-								<ScrollReveal mode="container" staggerDelay={0.15} baseRotation={0}>
+								<ScrollReveal
+									mode="container"
+									staggerDelay={0.15}
+									baseRotation={0}
+								>
 									<div className="container mx-auto px-4 py-6">
 										<div className="flex flex-col items-center justify-center gap-3 text-center">
 											{/* Créditos principais */}
@@ -820,7 +1078,8 @@ export default function Home() {
 												</a>
 											</p>
 											<p className="text-xs text-muted-foreground/60">
-												© {new Date().getFullYear()} Todos os direitos reservados
+												© {new Date().getFullYear()} Todos os direitos
+												reservados
 											</p>
 										</div>
 									</div>
