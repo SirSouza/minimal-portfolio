@@ -20,7 +20,6 @@ export default function Home() {
           text={["WORKING IN PROGRESS", "STAY TUNED!"]}
           typingSpeed={100}
           pauseDuration={1500}
-          cursorCharactere="|"
           className="text-2xl"
         />
       </div>
