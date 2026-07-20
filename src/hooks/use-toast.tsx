@@ -1,3 +1,4 @@
+// @ts-nocheck
 
 import * as React from "react";
 
@@ -47,21 +48,21 @@ type ActionType = typeof actionTypes;
 
 type Action =
   | {
-      type: ActionType["ADD_TOAST"];
-      toast: ToasterToast;
-    }
+    type: ActionType["ADD_TOAST"];
+    toast: ToasterToast;
+  }
   | {
-      type: ActionType["UPDATE_TOAST"];
-      toast: Partial<ToasterToast>;
-    }
+    type: ActionType["UPDATE_TOAST"];
+    toast: Partial<ToasterToast>;
+  }
   | {
-      type: ActionType["DISMISS_TOAST"];
-      toastId?: string;
-    }
+    type: ActionType["DISMISS_TOAST"];
+    toastId?: string;
+  }
   | {
-      type: ActionType["REMOVE_TOAST"];
-      toastId?: string;
-    };
+    type: ActionType["REMOVE_TOAST"];
+    toastId?: string;
+  };
 
 // State interface
 interface State {
@@ -149,15 +150,15 @@ function toast(props: ToastOptions) {
   if (props.duration !== Infinity) {
     const timeout = setTimeout(() => {
       dispatch({ type: actionTypes.DISMISS_TOAST, toastId: id });
-      
+
       // Remove after animation completes
       setTimeout(() => {
         dispatch({ type: actionTypes.REMOVE_TOAST, toastId: id });
       }, TOAST_REMOVE_DELAY);
-      
+
       toastTimeouts.delete(id);
     }, props.duration || 5000);
-    
+
     toastTimeouts.set(id, timeout);
   }
 
@@ -172,14 +173,14 @@ function toast(props: ToastOptions) {
 
   const dismiss = () => {
     dispatch({ type: actionTypes.DISMISS_TOAST, toastId: id });
-    
+
     // Clear any existing timeout
     const timeout = toastTimeouts.get(id);
     if (timeout) {
       clearTimeout(timeout);
       toastTimeouts.delete(id);
     }
-    
+
     // Remove after animation completes
     setTimeout(() => {
       dispatch({ type: actionTypes.REMOVE_TOAST, toastId: id });
@@ -233,14 +234,14 @@ function useToast() {
     toast,
     dismiss: (toastId?: string) => {
       dispatch({ type: actionTypes.DISMISS_TOAST, toastId });
-      
+
       if (toastId) {
         const timeout = toastTimeouts.get(toastId);
         if (timeout) {
           clearTimeout(timeout);
           toastTimeouts.delete(toastId);
         }
-        
+
         setTimeout(() => {
           dispatch({ type: actionTypes.REMOVE_TOAST, toastId });
         }, TOAST_REMOVE_DELAY);

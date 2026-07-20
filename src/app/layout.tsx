@@ -50,7 +50,7 @@ export default function RootLayout({
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css" />
       </head>
       <body
-        className={`${geistSans.variable} ${geistMono.variable} ${jetbrainsMono.variable} ${climateCrises.variable} antialiased
+        className={`${geistSans.variable} ${geistMono.variable} ${jetbrainsMono.variable} ${climateCrises.variable} antialiased, bg-black
          `}
       >
         {children}
